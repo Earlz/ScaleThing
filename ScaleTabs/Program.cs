@@ -108,27 +108,43 @@ namespace ScaleTabs
             Strings.Add(GenerateString(Note.A, fretmax));
             Strings.Add(GenerateString(Note.E, fretmax));
 
-            var l=MarkFrets(Strings[0], Note.C, MajorScale);
-            ;
+            var l1=MarkFrets(Strings[0], Note.C, MajorScale);
+            var l2=MarkFrets(Strings[0], Note.C, MinorScale);
+
+            PrintFrets("e", l1, l2);
+
+            Console.ReadKey();
+
 
         }
-        void PrintFrets(List<Note> str, List<int> marks, char notation)
+        void PrintFrets(string prefix, List<int> majors, List<int> minors)
         {
             StringBuilder sb = new StringBuilder();
-            foreach(var mark in marks)
+            sb.Append(prefix);
+            sb.Append(": ");
+            for (int i = 0; i < majors.Count;i++)
             {
+                var major = majors[i];
+                var minor = minors[i];
                 sb.Append("|");
-                if(mark == -1)
+                if(major == -1)
                 {
-                    sb.Append("--");
+                    sb.Append("-");
                 }
                 else
                 {
-                    sb.Append(notation);
-                    sb.Append(str);
+                    sb.Append(major);
                 }
-                sb.Append("|");
+                if(minor == -1)
+                {
+                    sb.Append("-");
+                }
+                else
+                {
+                    sb.Append(minor);
+                }
             }
+            Console.WriteLine(sb.ToString());
         }
         //returns list with the index corresponding to fret number and value being the "th" of the scale (or -1 for not in it)
         List<int> MarkFrets(List<Note> str, Note root, Func<Note, Note, int> scale)
