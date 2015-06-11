@@ -110,11 +110,22 @@ namespace ScaleTabs
 
             var l1=MarkFrets(Strings[0], Note.C, MajorScale);
             var l2=MarkFrets(Strings[0], Note.C, MinorScale);
-            Console.WriteLine(
-"First number: major, last number minor\n\r" +
-@"   OP|  |  | 3|  | 5|  | 7|  | 9|  |  |12|  |  |15|  |17|  |19|  |21|  |");
-            PrintFrets("e", l1, l2);
 
+            var root = Note.A;
+            for (int i = 0; i < 11; i++)
+            {
+                root = (Note)i;
+                Console.WriteLine(
+    "First number: major, last number minor. Scale "+root.ToString()+"\n\r" +
+    @"   OP|  |  | 3|  | 5|  | 7|  | 9|  |  |12|  |  |15|  |17|  |19|  |21|  |");
+                PrintFrets("e", MarkFrets(Strings[0], root, MajorScale), MarkFrets(Strings[0], root, MinorScale));
+                PrintFrets("B", MarkFrets(Strings[0], root, MajorScale), MarkFrets(Strings[0], root, MinorScale));
+                PrintFrets("G", MarkFrets(Strings[0], root, MajorScale), MarkFrets(Strings[0], root, MinorScale));
+                PrintFrets("D", MarkFrets(Strings[0], root, MajorScale), MarkFrets(Strings[0], root, MinorScale));
+                PrintFrets("A", MarkFrets(Strings[0], root, MajorScale), MarkFrets(Strings[0], root, MinorScale));
+                PrintFrets("E", MarkFrets(Strings[0], root, MajorScale), MarkFrets(Strings[0], root, MinorScale));
+                Console.WriteLine();
+            }
             Console.ReadKey();
 
 
