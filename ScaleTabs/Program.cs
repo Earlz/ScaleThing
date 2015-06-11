@@ -110,7 +110,9 @@ namespace ScaleTabs
 
             var l1=MarkFrets(Strings[0], Note.C, MajorScale);
             var l2=MarkFrets(Strings[0], Note.C, MinorScale);
-
+            Console.WriteLine(
+"First number: major, last number minor\n\r" +
+@"   OP|  |  | 3|  | 5|  | 7|  | 9|  |  |12|  |  |15|  |17|  |19|  |21|  |");
             PrintFrets("e", l1, l2);
 
             Console.ReadKey();
@@ -126,7 +128,6 @@ namespace ScaleTabs
             {
                 var major = majors[i];
                 var minor = minors[i];
-                sb.Append("|");
                 if(major == -1)
                 {
                     sb.Append("-");
@@ -143,6 +144,7 @@ namespace ScaleTabs
                 {
                     sb.Append(minor);
                 }
+                sb.Append("|");
             }
             Console.WriteLine(sb.ToString());
         }
