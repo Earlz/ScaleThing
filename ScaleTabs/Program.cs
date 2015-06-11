@@ -23,7 +23,7 @@ namespace ScaleTabs
             G=10,
             Gsharp=11
         }
-
+        //I'm sure if this wasn't a one off, there'd be a better way to do this.. 
         int MajorScale(Note root,Note n)
         {
             var ni = (int)n;
@@ -84,26 +84,13 @@ namespace ScaleTabs
         {
             var ni = (int)n;
             ni++;
-            if(ni == 12)
-            {
-                return Note.A;
-            }
-            return (Note)ni;
+            return (Note)(ni % 12);
         }
         Note Wholestep(Note n)
         {
             var ni = (int)n;
-            ni++;
-            ni++;
-            if(ni == 12)
-            {
-                return Note.A;
-            }
-            if(ni == 13)
-            {
-                return Note.Asharp;
-            }
-            return (Note)ni;
+            ni+=2;
+            return (Note)(ni % 12);
         }
 
 
